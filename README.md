@@ -70,9 +70,11 @@ PulseCord is a web application designed for students to connect, collaborate, an
 7. Access the application at `http://127.0.0.1:8000`.
 
 8. Important
+      ```bash
    The superuser for testing purposes is already their with the following credientials:
    Username: salab
    Password: 1212
+   ```
 
 ---
 
