@@ -37,12 +37,12 @@ PulseCord is a web application designed for students to connect, collaborate, an
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/salpy-py/Pulsecord.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd phase2
+   cd Pulsecord
    ```
 
 3. Create a virtual environment:
@@ -69,23 +69,13 @@ PulseCord is a web application designed for students to connect, collaborate, an
 
 7. Access the application at `http://127.0.0.1:8000`.
 
----
-
-## Screenshots
-
-### Homepage
-![Homepage Screenshot](#)
-Description: Overview of available rooms and recent activities.
-
-### Login Page
-![Login Page Screenshot](#)
-Description: Secure user login with username and password.
-
-### Room Page
-![Room Page Screenshot](#)
-Description: Real-time conversation with participants.
+8. Important
+   The superuser for testing purposes is already their with the following credientials:
+   Username: salab
+   Password: 1212
 
 ---
+
 
 ## Project Structure
 
@@ -107,6 +97,6 @@ PulseCord/
 
 ## Contact
 For any inquiries or contributions, feel free to reach out:
-- Email: [your-email@example.com]
-- GitHub: [GitHub Profile Link]
+- Email: salman.abid@iu-study.org
+- GitHub: https://github.com/salpy-py/Pulsecord.git
 
