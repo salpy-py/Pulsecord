@@ -74,6 +74,11 @@ PulseCord is a web application designed for students to connect, collaborate, an
    The superuser for testing purposes is already their with the following credientials:
    Username: salab
    Password: 1212
+
+
+    http://127.0.0.1:8000/admin
+      Superuser/Admin privileges for creation/deletion/addition of Users, Topics, Rooms and overall management.
+
    ```
 
 ---
