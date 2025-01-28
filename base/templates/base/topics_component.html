@@ -1,0 +1,17 @@
+<h3>Browse Topics</h3>
+<!-- Heading for the topics browsing section -->
+
+<hr>
+
+<a href={% url "home"  %}>All</a>
+<!-- Link to show all topics by redirecting to the home page without any query parameters -->
+
+{% for topic in topics  %}
+<!-- Loop through all the topics passed in the context -->
+<div>
+    <a href='{% url "home"  %}?q={{topic.name}}'>{{topic.name}}</a>
+    <!-- Each topic is displayed as a link -->
+    <!-- The 'q' query parameter filters rooms by the selected topic's name -->
+</div>
+{% endfor %}
+<!-- End of the loop -->

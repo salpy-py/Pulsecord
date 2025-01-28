@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+<!-- Extend the base template 'main.html' -->
+
+{% block content %}
+<!-- Content block to inject page-specific content -->
+
+<div>
+    <!-- Container for the form -->
+
+    <form method="POST" action="">
+        <!-- Form to handle POST requests -->
+        {% csrf_token %}
+        <!-- CSRF token for form security to prevent cross-site request forgery -->
+
+        {{form.as_p}}
+        <!-- Django's form rendering method:
+             - Renders the form fields with each field wrapped in a <p> tag -->
+
+        <input type='submit' value='Submit' />
+        <!-- Submit button to submit the form -->
+    </form>
+
+</div>
+
+{% endblock content %}
+<!-- End of content block -->

@@ -1,0 +1,57 @@
+{% extends "main.html" %}
+<!-- Extend the base template 'main.html' -->
+
+{% block content %}
+<!-- Content block to inject page-specific content -->
+
+{% if page == 'login' %}
+<!-- Render this block if the 'page' variable is set to 'login' -->
+
+<div>
+    <form action="" method="POST">
+        <!-- Form for user login -->
+        {% csrf_token %}
+        <!-- CSRF token for form security -->
+
+        <label for="">Username: </label>
+        <input type="text" id="" name="username" placeholder="Enter Username">
+        <!-- Input field for the username -->
+
+        <label for="">Password: </label>
+        <input type="password" id="" name="password" placeholder="Enter Password ">
+        <!-- Input field for the password -->
+
+        <input type="submit" value="Login">
+        <!-- Submit button to log in -->
+    </form>
+
+    <p>Haven't signed up yet?</p>
+    <!-- Prompt for users who don't have an account -->
+    <a href='{% url "register" %}'>Sign Up</a>
+    <!-- Link to the registration page -->
+</div> 
+
+{% else %}
+<!-- Render this block if the 'page' variable is not set to 'login' (e.g., for registration) -->
+
+<div>
+    <form action="" method="POST">
+        <!-- Form for user registration -->
+        {% csrf_token %}
+        <!-- CSRF token for form security -->
+        {{form.as_p}}
+        <!-- Render the registration form fields dynamically using Django's form rendering -->
+
+        <input type="submit" value="Register">
+        <!-- Submit button to register -->
+    </form>
+
+    <p>Already signed up?</p>
+    <!-- Prompt for users who already have an account -->
+    <a href='{% url "login" %}'>Login</a>
+    <!-- Link to the login page -->
+</div> 
+{% endif %}
+
+{% endblock content %}
+<!-- End of content block -->

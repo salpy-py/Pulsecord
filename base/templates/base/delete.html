@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+<!-- Extend the base template 'main.html' -->
+
+{% block content %}
+<!-- Content block to inject page-specific content -->
+
+<form method="POST" action="">
+    <!-- Form to confirm deletion -->
+    {% csrf_token %}
+    <!-- CSRF token for form security to prevent cross-site request forgery -->
+
+    <p>Are you sure you want to delete "{{ obj }}" ?</p>
+    <!-- Display a confirmation message with the name or identifier of the object to be deleted -->
+
+    <a href="{{ request.META.HTTP_REFERER }}">Go Back</a>
+    <!-- Link to return to the previous page (uses HTTP_REFERER to get the referrer URL) -->
+
+    <input type="submit" value="Confirm" />
+    <!-- Submit button to confirm the deletion -->
+</form>
+
+{% endblock content %}
+<!-- End of content block -->

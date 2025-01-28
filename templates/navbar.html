@@ -1,0 +1,41 @@
+{% load static %}
+<!-- Load the 'static' template tag to reference static files like images and CSS -->
+
+<div class="navbar-container">
+  <!-- Main container for the navigation bar -->
+
+  <a href="/">
+    <!-- Link to redirect users to the home page -->
+    <div class="logo-container">
+      <!-- Container for the application logo -->
+      <img src="{% static 'images/logo.jpg' %}" alt="App Logo" class="logo">
+      <!-- App logo loaded from the static directory -->
+    </div>
+  </a>
+
+  <form action='{% url "home" %}' method="GET">
+    <!-- Form for searching rooms -->
+    <input type="text" name="q" placeholder="Search for rooms..." id="navbar-search"/>
+    <!-- Search bar for users to search for rooms by entering a query -->
+  </form>
+
+  <div class="login-button">
+    <!-- Container for login/logout buttons and user greeting -->
+
+    {% if request.user.is_authenticated %}
+    <!-- Check if the user is logged in -->
+    <p>Hello <span id="hello-user">{{request.user}}</span></p>
+    <!-- Display a personalized greeting with the user's username -->
+    <a href='{% url "logout" %}' id="logout-link">Logout</a>
+    <!-- Logout link for authenticated users -->
+    {% else %}
+    <!-- If the user is not logged in -->
+    <a href='{% url "login" %}' id="login-link">Login</a>
+    <!-- Login link for unauthenticated users -->
+    {% endif %}
+
+  </div>
+</div>
+
+<hr />
+<!-- Horizontal line for separating the navbar from the content below -->

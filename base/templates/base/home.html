@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+<!-- Extend the base template 'main.html' -->
+
+{% block content %}
+<!-- Content block to inject page-specific content -->
+
+<style>
+    .home-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+    /* CSS Grid layout:
+       - Divides the container into three columns
+       - Left and right columns take 1 fraction of space each
+       - The middle column takes 3 fractions of space (main focus) */
+</style>
+
+<h1>Home</h1>
+<!-- Page heading -->
+
+<div class="home-container">
+    <!-- Main container for the home page layout -->
+
+    <div>
+        {% include "base/topics_component.html" %}
+        <!-- Include the topics component to display a list of topics -->
+    </div>
+
+    <div>
+        <h5>Available Rooms: {{rooms_count}}</h5>
+        <!-- Display the count of available rooms -->
+        <a href='{% url "create-room" %}'>Create Room</a>
+        <!-- Link to create a new room -->
+        {% include "base/feed_component.html" %}
+        <!-- Include the feed component to display available rooms or recent posts -->
+    </div>
+
+    <div>
+        {% include "base/activity_component.html" %}
+        <!-- Include the activity component to show recent activity or updates -->
+    </div>
+</div>
+
+{% endblock content %}
+<!-- End of content block -->

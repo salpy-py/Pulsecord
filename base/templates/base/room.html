@@ -1,0 +1,82 @@
+{% extends "main.html" %}
+<!-- Extend the base template 'main.html' -->
+
+{% block content %}
+<!-- Content block to inject page-specific content -->
+
+<style>
+    .room-container {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+    /* Defines a two-column grid layout for the room page
+       - The first column (3fr) takes up 3 parts of the space
+       - The second column (1fr) takes up 1 part of the space */
+</style>
+
+<div class="room-container">
+    <!-- Main container for the room content -->
+
+    <div>
+        <!-- Left column for room details and conversation -->
+
+        <h2>
+            {{room.id}} -- {{room.name}}
+            <!-- Displays the room ID and name -->
+            <p>{{room.description}}</p>
+            <!-- Displays the room description -->
+        </h2>
+
+        <div class="comment-wrapper">
+            <!-- Wrapper for the conversation section -->
+            <h3>Conversation</h3>
+            <hr />
+            <!-- Header and separator for the conversation section -->
+
+            {% for message in room_messages %}
+            <!-- Loop through all the messages in the room -->
+            <div>
+                {% if request.user == message.user %}
+                <!-- Show the delete link only if the current user is the message author -->
+                <a href="{% url 'delete-message' message.id %}">Delete</a>
+                {% endif %}
+                
+                <small>@{{message.user}} {{message.created|timesince}} ago </small>
+                <!-- Displays the username of the message author and time since the message was created -->
+                <p>{{message.body}}</p>
+                <!-- Displays the content of the message -->
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if request.user.is_authenticated %}
+        <!-- Show the comment form only if the user is authenticated -->
+        <div class="comment-form">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <!-- CSRF token for form security -->
+                <input type="text" name="body" placeholder="Write your message here..." />
+                <!-- Input field for submitting a new message -->
+            </form>
+        </div>
+        {% endif %}
+    </div>
+
+    <div>
+        <!-- Right column for participants -->
+        <h3>Participants</h3>
+        <hr>
+        <!-- Header and separator for the participants section -->
+
+        {% for user in participants %}
+        <!-- Loop through all participants in the room -->
+        <div>
+            <p>@{{user.username}}</p>
+            <!-- Displays the username of each participant -->
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+<!-- End of content block -->

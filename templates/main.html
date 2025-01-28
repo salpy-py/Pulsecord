@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- Declares the document type as HTML -->
+
+{% load static %}
+<!-- Load the 'static' template tag to reference static files like CSS, JS, or images -->
+
+<html lang="en">
+<!-- Set the language of the document to English -->
+<head>
+    <!-- Metadata and resources for the document -->
+    <meta charset="UTF-8">
+    <!-- Specifies the character encoding (UTF-8) for proper rendering -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ensures responsive behavior for mobile devices -->
+
+    <title>PulseCord</title>
+    <!-- Title of the web page that appears on the browser tab -->
+
+    <!-- Link to Google Fonts for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Link to the main CSS file in the static directory -->
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" type="text/css" media="screen">
+    <!-- 'media="screen"' ensures the CSS applies to screen displays -->
+</head>
+<body>
+    <!-- The main content of the document begins here -->
+
+    {% include "navbar.html" %}
+    <!-- Include the navbar.html file for consistent navigation across pages -->
+
+    {% if messages %}
+    <!-- Check if there are any messages to display -->
+    <div class="message-container">
+        <!-- Container for displaying messages -->
+        <ul class="message-list">
+            <!-- List to display individual messages -->
+            {% for message in messages %}
+            <!-- Loop through all the messages -->
+            <li class="message-item">{{ message }}</li>
+            <!-- Display each message as a list item -->
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    <!-- End of messages section -->
+
+    <main>
+        <!-- Main content area -->
+        {% block content %}
+        <!-- Placeholder block for child templates to inject content -->
+        {% endblock content %}
+    </main>
+
+</body>
+</html>

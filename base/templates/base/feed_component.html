@@ -1,0 +1,33 @@
+<div>
+    <!-- Container for displaying the list of rooms -->
+
+    {% for room in rooms %}
+    <!-- Loop through the list of rooms passed in the context -->
+
+    <div>
+        <!-- Individual room container -->
+
+        {% if request.user == room.host %}
+        <!-- Check if the current user is the host of the room -->
+        <a href='{% url "update-room" room.id %}'>Edit</a>
+        <!-- Link to edit the room -->
+        <a href='{% url "delete-room" room.id %}'>Delete</a>
+        <!-- Link to delete the room -->
+        {% endif %}
+
+        <a href='{% url "user-profile" room.host.id %}'>@{{room.host.username}}</a>
+        <!-- Link to the profile of the room host -->
+
+        <h4>{{room.id}} -- <a href='{% url "room" room.id %}'>{{room.name}}</a></h4>
+        <!-- Display the room ID and name as a clickable link to the room page -->
+
+        <small>{{room.topic.name}}</small>
+        <!-- Display the topic of the room -->
+
+        <hr>
+        <!-- Horizontal line to separate room entries -->
+    </div>
+    
+    {% endfor %}
+    <!-- End of the loop -->
+</div>

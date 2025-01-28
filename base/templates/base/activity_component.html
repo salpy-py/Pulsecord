@@ -1,0 +1,37 @@
+<h3>Recent Activity</h3>
+<!-- Section heading for recent user activity -->
+
+<hr>
+<!-- Horizontal line to visually separate the section -->
+
+{% for message in room_messages %}
+<!-- Loop through the list of recent messages passed in the context -->
+
+<div>
+    <!-- Container for each individual message -->
+
+    <small>
+        <a href="{% url 'user-profile' message.user.id %}">@{{message.user}}</a>
+        <!-- Link to the user's profile who created the message -->
+        {{message.created|timesince}}
+        <!-- Display the time since the message was created using the 'timesince' filter -->
+    </small>
+
+    <small>replied to "{{message.room}}"</small>
+    <!-- Display the room the message belongs to -->
+
+    <p>{{message}}</p>
+    <!-- Display the body of the message -->
+
+    {% if request.user == message.user %}
+    <!-- Check if the current user is the author of the message -->
+    <a href="{% url 'delete-message' message.id %}">Delete</a>
+    <!-- Display a delete link if the user is the message author -->
+    {% endif %}
+
+    <hr>
+    <!-- Horizontal line to separate individual messages -->
+</div>
+
+{% endfor %}
+<!-- End of the loop -->

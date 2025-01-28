@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+<!-- Extend the base template 'main.html' -->
+
+{% block content %}
+<!-- Content block to inject page-specific content -->
+
+<style>
+    .profile-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+    /* CSS Grid layout:
+       - Divides the container into three columns
+       - First and third columns take 1 fraction of space each
+       - Middle column takes 3 fractions of space */
+</style>
+
+<h1>{{ user.username }}</h1>
+<!-- Display the username of the profile being viewed -->
+
+<div class="profile-container">
+    <!-- Main container for the profile layout -->
+
+    <div>
+        {% include "base/topics_component.html" %}
+        <!-- Include the topics component to display topics -->
+    </div>
+
+    <div>
+        {% include "base/feed_component.html" %}
+        <!-- Include the feed component to display the user's activity feed -->
+    </div>
+
+    <div>
+        {% include "base/activity_component.html" %}
+        <!-- Include the activity component to display additional activity-related details -->
+    </div>
+</div>
+
+{% endblock content %}
+<!-- End of content block -->
